@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API_URL } from "../utils/constant";
 import RestaurantCards from "./RestaurantCards";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -18,9 +19,9 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(API_URL);
     const json = await data.json();
-    // console.log(
-    //   json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    // );
+    console.log(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
 
     setListOfRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
@@ -77,10 +78,12 @@ const Body = () => {
 
       <div className="mt-7 px-6 flex flex-wrap gap-5 justify-between">
         {filteredRestaurant.map((restaurant) => (
-          <RestaurantCards
+          <Link
+            to={"/restaurants/" + restaurant?.info?.id}
             key={restaurant?.info?.id}
-            restuarantData={restaurant}
-          />
+          >
+            <RestaurantCards restuarantData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { assets } from "../assets/assets";
 // import { CiSearch } from "react-icons/ci";
 import { AiOutlineUser } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [buttonToggle, setButtonToggle] = useState("Login");
@@ -19,9 +20,18 @@ const Header = () => {
 
       <div>
         <ul className="flex mr-5 gap-4">
-          <li className="cursor-pointer">Home</li>
-          <li className="cursor-pointer">About</li>
-          <li className="cursor-pointer">Contact Us</li>
+          <li className="cursor-pointer">
+            <Link to={"/"}>Home</Link>
+          </li>
+          <li className="cursor-pointer">
+            <Link to={"/about"}>About</Link>
+          </li>
+          <li className="cursor-pointer">
+            <Link to={"/grocery"}>Grocery</Link>
+          </li>
+          <li className="cursor-pointer">
+            <Link to={"/contact"}>Contact Us</Link>
+          </li>
         </ul>
       </div>
 
